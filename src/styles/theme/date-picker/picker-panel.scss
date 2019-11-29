@@ -1,0 +1,117 @@
+@import "../common/var";
+
+@include b(picker-panel) {
+  color: $--color-text-regular;
+  border:  0.001rem solid $--datepicker-border-color;
+  box-shadow: $--box-shadow-light;
+  background: $--color-white;
+  border-radius: $--border-radius-base;
+  line-height:     0.30rem;
+  margin:  0.005rem 0;
+
+  @include e((body, body-wrapper)) {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  @include e(content) {
+    position: relative;
+    margin:     0.15rem;
+  }
+
+  @include e(footer) {
+    border-top:  0.001rem solid $--datepicker-inner-border-color;
+    padding:  0.004rem;
+    text-align: right;
+    background-color: $--color-white;
+    position: relative;
+    font-size: 0;
+  }
+
+  @include e(shortcut) {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    line-height:     0.28rem;
+    font-size:     0.14rem;
+    color: $--datepicker-font-color;
+    padding-left:     0.12rem;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $--datepicker-hover-font-color;
+    }
+
+    &.active {
+      background-color: #e6f1fe;
+      color: $--datepicker-active-color;
+    }
+  }
+
+  @include e(btn) {
+    border:  0.001rem solid #dcdcdc;
+    color: #333;
+    line-height:     0.24rem;
+    border-radius:  0.002rem;
+    padding: 0     0.20rem;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-size:     0.12rem;
+
+    &[disabled] {
+      color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(icon-btn) {
+    font-size:     0.12rem;
+    color: $--datepicker-icon-color;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    margin-top:  0.008rem;
+
+    &:hover {
+      color: $--datepicker-hover-font-color;
+    }
+
+    @include when(disabled) {
+      color: $--font-color-disabled-base;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include e(link-btn) {
+    vertical-align: middle;
+  }
+}
+
+.el-picker-panel *[slot=sidebar],
+.el-picker-panel__sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1.10rem;
+  border-right:  0.001rem solid $--datepicker-inner-border-color;
+  box-sizing: border-box;
+  padding-top:  0.006rem;
+  background-color: $--color-white;
+  overflow: auto;
+}
+
+.el-picker-panel *[slot=sidebar] + .el-picker-panel__body,
+.el-picker-panel__sidebar + .el-picker-panel__body {
+  margin-left: 1.10rem;
+}

@@ -1,0 +1,55 @@
+$--color-text-primary: #333333;
+$--color-text-disabled: rgba(131, 173, 255, 0.6) !default;
+
+
+
+// Base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #30B08F;
+
+
+
+//  Globel 
+$paddin64:0.64rem;
+
+// NavBar SideBar
+$width64:0.64rem;
+$height64:0.64rem;
+
+// Sidebar
+$sideBarWidth: 2.1rem;
+$subMenuBg:#ffffff;
+$subMenuHover:rgba(41, 205, 179, 0.1);
+
+$width300:3.0rem;
+
+$subMenuActiveText:#29CDB3;
+$menuBg:#ffffff;
+$menuText:#333333;
+$menuActiveText:#29CDB3; // Also see settings.sidebarTextTheme
+
+// Login page
+$lightGray: #eee;
+$lightTitle :#29CDB3;
+$darkGray:#889aa4;
+$loginBg: #ffffff;
+$loginCursorColor: #fff;
+
+// manageDoc
+$textPrimary : #29CDB3;
+// The :export directive is the magic sauce for webpack
+// https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
+:export {
+  menuBg: $menuBg;
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  px112: 0.84rem;
+  formPX84: 0.84rem; 
+  width300:$width300;
+}

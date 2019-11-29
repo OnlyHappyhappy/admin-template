@@ -1,0 +1,317 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(step) {
+  position: relative;
+  flex-shrink: 1;
+
+  @include pseudo(last-of-type) {
+    @include e(line) {
+      display: none;
+    }
+
+    // 只有未设置 space 的情况下才自适应宽度
+    @include when(flex) {
+      flex-basis: auto !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+
+    @include e((main, description)) {
+      padding-right: 0;
+    }
+  }
+
+  @include e(head) {
+    position: relative;
+    width: 100%;
+
+    @include when(process) {
+      color: $--color-text-primary;
+      border-color: $--color-text-primary;
+    }
+
+    @include when(wait) {
+      color: $--color-text-placeholder;
+      border-color: $--color-text-placeholder;
+    }
+
+    @include when(success) {
+      color: $--color-success;
+      border-color: $--color-success;
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+      border-color: $--color-danger;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+      border-color: $--color-primary;
+    }
+  }
+
+  @include e(icon) {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:     0.24rem;
+    height:     0.24rem;
+    font-size:     0.14rem;
+    box-sizing: border-box;
+    background: $--color-white;
+    transition: .15s ease-out;
+
+    @include when(text) {
+      border-radius: 50%;
+      border:  0.002rem solid;
+      border-color: inherit;
+    }
+
+    @include when(icon) {
+      width:     0.40rem;
+    }
+  }
+
+  @include e(icon-inner) {
+    display: inline-block;
+    user-select: none;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+
+    &[class*=el-icon]:not(.is-status) {
+      font-size:     0.25rem;
+      font-weight: normal;
+    }
+
+    // 组件自身表示状态的图标
+    @include when(status) {
+      transform: translateY(1px);
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    border-color: inherit;
+    background-color: $--color-text-placeholder;
+  }
+
+  @include e(line-inner) {
+    display: block;
+    border-width:  0.001rem;
+    border-style: solid;
+    border-color: inherit;
+    transition: .15s ease-out;
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+  }
+
+  @include e(main) {
+    white-space: normal;
+    text-align: left;
+  }
+
+  @include e(title) {
+    font-size:     0.16rem;
+    line-height:     0.38rem;
+
+    @include when(process) {
+      font-weight: bold;
+      color: $--color-text-primary;
+    }
+
+    @include when(wait) {
+      color: $--color-text-placeholder;
+    }
+
+    @include when(success) {
+      color: $--color-success;
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+    }
+  }
+
+  @include e(description) {
+    padding-right: 10%;
+    margin-top: -5px;
+    font-size:     0.12rem;
+    line-height:     0.20rem;
+    font-weight: normal;
+
+    @include when(process) {
+      color: $--color-text-primary;
+    }
+
+    @include when(wait) {
+      color: $--color-text-placeholder;
+    }
+
+    @include when(success) {
+      color: $--color-success;
+    }
+
+    @include when(error) {
+      color: $--color-danger;
+    }
+
+    @include when(finish) {
+      color: $--color-primary;
+    }
+  }
+
+  @include when(horizontal) {
+    display: inline-block;
+
+    @include e(line) {
+      height:  0.002rem;
+      top:     0.11rem;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @include when(vertical) {
+    display: flex;
+
+    @include e(head) {
+      flex-grow: 0;
+      width:     0.24rem;
+    }
+
+    @include e(main) {
+      padding-left:     0.10rem;
+      flex-grow: 1;
+    }
+
+    @include e(title) {
+      line-height:     0.24rem;
+      padding-bottom:  0.008rem;
+    }
+
+    @include e(line) {
+      width:  0.002rem;
+      top: 0;
+      bottom: 0;
+      left:     0.11rem;
+    }
+
+    @include e(icon) {
+      @include when(icon) {
+        width:     0.24rem;
+      }
+    }
+  }
+
+  @include when(center) {
+
+    @include e(head) {
+      text-align: center;
+    }
+
+    @include e(main) {
+      text-align: center;
+    }
+
+    @include e(description) {
+      padding-left: 20%;
+      padding-right: 20%;
+    }
+
+    @include e(line) {
+      left: 50%;
+      right: -50%;
+    }
+  }
+
+  @include when(simple) {
+    display: flex;
+    align-items: center;
+
+    @include e(head) {
+      width: auto;
+      font-size: 0;
+      padding-right:     0.10rem;
+    }
+
+    @include e(icon) {
+      background: transparent;
+      width:     0.16rem;
+      height:     0.16rem;
+      font-size:     0.12rem;
+    }
+
+    @include e(icon-inner) {
+      &[class*=el-icon]:not(.is-status) {
+        font-size:     0.18rem;
+      }
+
+      &.is-status {
+        transform: scale(.8) translateY(1px);
+      }
+    }
+
+    @include e(main) {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      flex-grow: 1;
+    }
+
+    @include e(title) {
+      font-size:     0.16rem;
+      line-height:     0.20rem;
+    }
+
+    @include pseudo('not(:last-of-type)') {
+      @include e(title) {
+        max-width: 50%;
+        word-break: break-all;
+      }
+    }
+
+    @include e(arrow) {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height:     0.15rem;
+        width:  0.001rem;
+        background: $--color-text-placeholder;
+      }
+
+      &::before {
+        transform: rotate(-45deg) translateY(-4px);
+        transform-origin: 0 0;
+      }
+
+      &::after {
+        transform: rotate(45deg) translateY(4px);
+        transform-origin: 100% 100%;
+      }
+    }
+
+    @include pseudo(last-of-type) {
+      @include e(arrow) {
+        display: none;
+      }
+    }
+  }
+}

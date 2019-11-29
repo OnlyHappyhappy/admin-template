@@ -1,0 +1,80 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+@import "./input.scss";
+@import "./scrollbar.scss";
+@import "./popper";
+
+@include b(autocomplete) {
+  position: relative;
+  display: inline-block;
+}
+
+@include b(autocomplete-suggestion) {
+  margin:  0.005rem 0;
+  box-shadow: $--box-shadow-light;
+  border-radius: $--border-radius-base;
+  border:  0.001rem solid $--border-color-light;
+  box-sizing: border-box;
+  background-color: $--color-white;
+
+  @include e(wrap) {
+    max-height: 2.80rem;
+    padding:  0.10rem 0;
+    box-sizing: border-box;
+  }
+
+  @include e(list) {
+    margin: 0;
+    padding: 0;
+  }
+
+  & li {
+    padding: 0  0.20rem;
+    margin: 0;
+    line-height:  0.34rem;
+    cursor: pointer;
+    color: $--color-text-regular;
+    font-size: $--font-size-base;
+    list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      background-color: $--select-option-hover-background;
+    }
+
+    &.highlighted {
+      background-color: $--select-option-hover-background;
+    }
+
+    &.divider {
+      margin-top:  0.006rem;
+      border-top:  0.001rem solid $--color-black;
+    }
+
+    &.divider:last-child {
+      margin-bottom: -6px;
+    }
+  }
+
+  @include when(loading) {
+    li {
+      text-align: center;
+      height: 1.00rem;
+      line-height: 1.00rem;
+      font-size:  0.20rem;
+      color: #999;
+      @include utils-vertical-center;
+
+      &:hover {
+        background-color: $--color-white;
+      }
+    }
+
+    & .el-icon-loading {
+      vertical-align: middle;
+    }
+  }
+}

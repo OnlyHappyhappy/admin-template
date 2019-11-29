@@ -1,0 +1,208 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+
+
+
+// .el-form-item__label{
+//   background: red;
+//   font-size: 1rem;
+// }
+
+
+@include b(form) {
+  @include m(label-left) {
+    & .el-form-item__label {
+      text-align: left;
+    }
+  }
+
+  @include m(label-top) {
+    & .el-form-item__label {
+      float: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0 0 0.10rem 0;
+    }
+  }
+
+  @include m(inline) {
+    & .el-form-item {
+      display: inline-block;
+      margin-right: 0.10rem;
+      vertical-align: top;
+    }
+
+    & .el-form-item__label {
+      float: none;
+      display: inline-block;
+    }
+
+    & .el-form-item__content {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &.el-form--label-top .el-form-item__content {
+      display: block;
+    }
+  }
+}
+
+
+@include b(form-item) {
+  margin-bottom: 0.22rem;
+  @include utils-clearfix;
+
+  & .el-form-item {
+    margin-bottom: 0;
+  }
+
+  & .el-input__validateIcon {
+    display: none;
+  }
+
+  @include m(medium) {
+    .el-form-item__label {
+      line-height: 0.36rem;
+    }
+
+    .el-form-item__content {
+      line-height: 0.36rem;
+    }
+  }
+
+  @include m(small) {
+    .el-form-item__label {
+      line-height: 0.32rem;
+    }
+
+    .el-form-item__content {
+      line-height: 0.32rem;
+    }
+
+    &.el-form-item {
+      margin-bottom: 0.18rem;
+    }
+
+    .el-form-item__error {
+      padding-top: 0.002rem;
+    }
+  }
+
+  @include m(mini) {
+    .el-form-item__label {
+      line-height: 0.28rem;
+    }
+
+    .el-form-item__content {
+      line-height: 0.28rem;
+    }
+
+    &.el-form-item {
+      margin-bottom: 0.18rem;
+    }
+
+    .el-form-item__error {
+      padding-top: 0.001rem;
+    }
+  }
+
+  @include e(label-wrap) {
+    float: left;
+
+    .el-form-item__label {
+      display: inline-block;
+      float: none;
+    }
+  }
+
+  @include e(label) {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: $--form-label-font-size;
+    color: $--color-text-regular;
+    line-height: 0.40rem;
+    padding: 0 0.12rem 0 0;
+    box-sizing: border-box;
+  }
+
+  @include e(content) {
+    line-height: 0.32rem;
+    position: relative;
+    font-size: 0.14rem;
+    width: 1.84rem;
+    @include utils-clearfix;
+    .el-input-group {
+      vertical-align: top;
+    }
+    .el-input {
+      padding: 0rem 0.01rem;
+      font-size: 0.14rem;
+      .el-input__inner {
+        display: block;
+      }
+    }
+  }
+
+  @include e(error) {
+    color: $--color-danger;
+    font-size: 0.12rem;
+    line-height: 1;
+    padding-top: 0.004rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    @include m(inline) {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      margin-left: 0.10rem;
+    }
+  }
+
+  @include when(required) {
+    @include pseudo('not(.is-no-asterisk)') {
+
+      &>.el-form-item__label:before,
+      & .el-form-item__label-wrap>.el-form-item__label:before {
+        content: '*';
+        vertical-align: sub;
+        color: $--color-danger;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  @include when(error) {
+
+    & .el-input__inner,
+    & .el-textarea__inner {
+
+      &,
+      &:focus {
+        border-color: $--color-danger;
+      }
+    }
+
+    & .el-input-group__append,
+    & .el-input-group__prepend {
+      & .el-input__inner {
+        border-color: transparent;
+      }
+    }
+
+    .el-input__validateIcon {
+      color: $--color-danger;
+    }
+  }
+
+  @include m(feedback) {
+    .el-input__validateIcon {
+      display: inline-block;
+    }
+  }
+}

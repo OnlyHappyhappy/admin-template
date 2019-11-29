@@ -1,0 +1,23 @@
+$vm_base: 1920; // 设计稿尺寸标准
+
+// 将px单位转换成vw
+@function vm($px) {
+  @return ($px / $vm_base) * 100vw;
+}
+
+// 当最小地狱50px 自动配置line为50px
+
+@media screen {
+  // 参数为rem单位
+  @function b1233($x) {
+    $standard: $x * (100vw / 1920) * 100;
+    $params: $x;
+
+    @if $standard <=12 {
+      @return 12px
+    }
+    // @else {
+    //   @return #{$standard}rem
+    // }
+  }
+}

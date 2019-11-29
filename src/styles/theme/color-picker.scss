@@ -1,0 +1,384 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(color-predefine) {
+  display: flex;
+  font-size:     0.12rem;
+  margin-top:  0.008rem;
+  width: 2.80rem;
+
+  @include e(colors) {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  @include e(color-selector) {
+    margin: 0 0  0.008rem  0.008rem;
+    width:     0.20rem;
+    height:     0.20rem;
+    border-radius:  0.004rem;
+    cursor: pointer;
+
+    &:nth-child(10n + 1) {
+      margin-left: 0;
+    }
+
+    &.selected {
+      box-shadow: 0 0  0.003rem  0.002rem $--color-primary;
+    }
+
+    > div {
+      display: flex;
+      height: 100%;
+      border-radius:  0.003rem;
+    }
+
+    @include when(alpha) {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+    }
+  }
+}
+
+@include b(color-hue-slider) {
+  position: relative;
+  box-sizing: border-box;
+  width: 2.80rem;
+  height:     0.12rem;
+  background-color: #f00;
+  padding: 0  0.002rem;
+
+  @include e(bar) {
+    position: relative;
+    background: linear-gradient(
+      to right, #f00 0%,
+      #ff0 17%, #0f0 33%,
+      #0ff 50%, #00f 67%,
+      #f0f 83%, #f00 100%);
+    height: 100%;
+  }
+
+  @include e(thumb) {
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width:  0.004rem;
+    height: 100%;
+    border-radius:  0.001rem;
+    background: #fff;
+    border:  0.001rem solid #f0f0f0;
+    box-shadow: 0 0  0.002rem rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  @include when(vertical) {
+    width:     0.12rem;
+    height: 1.80rem;
+    padding:  0.002rem 0;
+
+    .el-color-hue-slider__bar {
+      background: linear-gradient(
+        to bottom, #f00 0%,
+        #ff0 17%, #0f0 33%,
+        #0ff 50%, #00f 67%,
+        #f0f 83%, #f00 100%);
+    }
+
+    .el-color-hue-slider__thumb {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height:  0.004rem;
+    }
+  }
+}
+
+@include b(color-svpanel) {
+  position: relative;
+  width: 2.80rem;
+  height: 1.80rem;
+
+  @include e(('white', 'black')) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include e('white') {
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+  }
+
+  @include e('black') {
+    background: linear-gradient(to top, #000, rgba(0,0,0,0));
+  }
+
+  @include e(cursor) {
+    position: absolute;
+
+    > div {
+      cursor: head;
+      width:  0.004rem;
+      height:  0.004rem;
+      box-shadow: 0 0 0 1.5px #fff, inset 0 0  0.001rem  0.001rem rgba(0,0,0,0.3), 0 0  0.001rem  0.002rem rgba(0,0,0,0.4);
+      border-radius: 50%;
+      transform: translate(-2px, -2px);
+    }
+  }
+}
+
+@include b(color-alpha-slider) {
+  position: relative;
+  box-sizing: border-box;
+  width: 2.80rem;
+  height:     0.12rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+
+  @include e(bar) {
+    position: relative;
+    background: linear-gradient(
+      to right, rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 100%);
+    height: 100%;
+  }
+
+  @include e(thumb) {
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width:  0.004rem;
+    height: 100%;
+    border-radius:  0.001rem;
+    background: #fff;
+    border:  0.001rem solid #f0f0f0;
+    box-shadow: 0 0  0.002rem rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  @include when(vertical) {
+    width:     0.20rem;
+    height: 1.80rem;
+
+    .el-color-alpha-slider__bar {
+      background: linear-gradient(
+        to bottom, rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%);
+    }
+
+    .el-color-alpha-slider__thumb {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height:  0.004rem;
+    }
+  }
+}
+
+@include b(color-dropdown) {
+  width: 3.00rem;
+
+  @include e(main-wrapper) {
+    margin-bottom:  0.006rem;
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  @include e(btns) {
+    margin-top:  0.006rem;
+    text-align: right;
+  }
+
+  @include e(value) {
+    float: left;
+    line-height:     0.26rem;
+    font-size:     0.12rem;
+    color: $--color-black;
+    width: 1.60rem;
+  }
+
+  @include e(btn) {
+    border:  0.001rem solid #dcdcdc;
+    color: #333;
+    line-height:     0.24rem;
+    border-radius:  0.002rem;
+    padding: 0     0.20rem;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-size:     0.12rem;
+
+    &[disabled] {
+      color: #cccccc;
+      cursor: not-allowed;
+    }
+    &:hover {
+      color: $--color-primary;
+      border-color: $--color-primary;
+    }
+  }
+
+  @include e(link-btn) {
+    cursor: pointer;
+    color: $--color-primary;
+    text-decoration: none;
+    padding:     0.15rem;
+    font-size:     0.12rem;
+    &:hover {
+      color: tint($--color-primary, $--button-hover-tint-percent);
+    }
+  }
+}
+
+@include b(color-picker) {
+  display: inline-block;
+  position: relative;
+  line-height: normal;
+  height:     0.40rem;
+
+  @include when(disabled) {
+    .el-color-picker__trigger {
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(medium) {
+    height:     0.36rem;
+
+    .el-color-picker__trigger {
+      height:     0.36rem;
+      width:     0.36rem;
+    }
+
+    .el-color-picker__mask {
+      height:     0.34rem;
+      width:     0.34rem;
+    }
+  }
+
+  @include m(small) {
+    height:     0.32rem;
+
+    .el-color-picker__trigger {
+      height:     0.32rem;
+      width:     0.32rem;
+    }
+
+    .el-color-picker__mask {
+      height:     0.30rem;
+      width:     0.30rem;
+    }
+
+    .el-color-picker__icon,
+    .el-color-picker__empty {
+      transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+  }
+
+  @include m(mini) {
+    height:     0.28rem;
+
+    .el-color-picker__trigger {
+      height:     0.28rem;
+      width:     0.28rem;
+    }
+
+    .el-color-picker__mask {
+      height:     0.26rem;
+      width:     0.26rem;
+    }
+
+    .el-color-picker__icon,
+    .el-color-picker__empty {
+      transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+  }
+
+  @include e(mask) {
+    height:     0.38rem;
+    width:     0.38rem;
+    border-radius:  0.004rem;
+    position: absolute;
+    top:  0.001rem;
+    left:  0.001rem;
+    z-index: 1;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, .7);
+  }
+
+  @include e(trigger) {
+    display: inline-block;
+    box-sizing: border-box;
+    height:     0.40rem;
+    width:     0.40rem;
+    padding:  0.004rem;
+    border:  0.001rem solid #e6e6e6;
+    border-radius:  0.004rem;
+    font-size: 0;
+    position: relative;
+    cursor: pointer;
+  }
+
+  @include e(color) {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    border:  0.001rem solid #999;
+    border-radius: $--border-radius-small;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    @include when(alpha) {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+    }
+  }
+
+  @include e(color-inner) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include e(empty) {
+    font-size:     0.12rem;
+    color: #999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  @include e(icon) {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    color: $--color-white;
+    text-align: center;
+    font-size:     0.12rem;
+  }
+
+  @include e(panel) {
+    position: absolute;
+    z-index: 10;
+    padding:  0.006rem;
+    box-sizing: content-box;
+    background-color: $--color-white;
+    border:  0.001rem solid $--border-color-lighter;
+    border-radius: $--border-radius-base;
+    box-shadow: $--dropdown-menu-box-shadow;
+  }
+}

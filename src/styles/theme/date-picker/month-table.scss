@@ -1,0 +1,82 @@
+@import "../common/var";
+
+@include b(month-table) {
+  font-size:     0.12rem;
+  margin: -1px;
+  border-collapse: collapse;
+
+  td {
+    text-align: center;
+    padding:  0.008rem  0.000rem;
+    cursor: pointer;
+    & div {
+      height:     0.48rem;
+      padding:  0.006rem 0;
+      box-sizing: border-box;
+    }
+    &.today {
+      .cell {
+        color: $--color-primary;
+        font-weight: bold;
+      }
+      &.start-date .cell,
+      &.end-date .cell {
+        color: $--color-white;
+      }
+    }
+
+    &.disabled .cell {
+      background-color: $--background-color-base;
+      cursor: not-allowed;
+      color: $--color-text-placeholder;
+
+      &:hover {
+        color: $--color-text-placeholder;
+      }
+    }
+
+    .cell {
+      width:     0.60rem;
+      height:     0.36rem;
+      display: block;
+      line-height:     0.36rem;
+      color: $--datepicker-font-color;
+      margin: 0 auto;
+      border-radius:     0.18rem;
+      &:hover {
+        color: $--datepicker-hover-font-color;
+      }
+    }
+
+    &.in-range div {
+      background-color: $--datepicker-inrange-background-color;
+      &:hover {
+        background-color: $--datepicker-inrange-hover-background-color;
+      }
+    }
+    &.start-date div,
+    &.end-date div {
+      color: $--color-white;
+    }
+
+    &.start-date .cell,
+    &.end-date .cell {
+      color: $--color-white;
+      background-color: $--datepicker-active-color;
+    }
+
+    &.start-date div {
+      border-top-left-radius:     0.24rem;
+      border-bottom-left-radius:     0.24rem;
+    }
+
+    &.end-date div {
+      border-top-right-radius:     0.24rem;
+      border-bottom-right-radius:     0.24rem;
+    }
+
+    &.current:not(.disabled) .cell {
+      color: $--datepicker-active-color;
+    }
+  }
+}
