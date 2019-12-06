@@ -1,0 +1,18 @@
+// 全局element样式重写
+// @import './reset/Dropdown/index.scss';
+// @import './reset/Dialog/style.scss';
+// @import "./reset/Pagination/style.scss";
+@import './reset/Table/style.scss';
+
+
+// .el-table {
+  // element bug， 修复边框消失问题 z-index
+  // .el-table__body-wrapper.is-scrolling-none~.el-table__fixed-right {
+  //   border-left: 1px solid #EBEEF5;
+  // }
+  // 修复el-tabl表头与body无法对齐
+  // th.gutter{
+  //   display: table-cell !important;
+  // }
+// } 
+

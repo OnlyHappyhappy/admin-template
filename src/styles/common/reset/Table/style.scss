@@ -1,0 +1,10 @@
+
+.el-table {
+  // element bug， 修复边框消失问题 z-index
+  // .el-table__body-wrapper.is-scrolling-none~.el-table__fixed-right {
+  //   border-left: 1px solid #EBEEF5;
+  // }
+  th:nth-last-child(2) {
+    border-right: 0;
+  }
+} 

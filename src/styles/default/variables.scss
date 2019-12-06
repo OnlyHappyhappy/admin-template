@@ -1,0 +1,92 @@
+/* 自定义变量 */
+
+// 组件配置变量
+// 视嵌套等级而定
+$sideBarWidth: 160px !default;
+// navbar height
+$navbarWidth: 50px !default;
+
+$--font-family: 'Avenir, Helvetica, Arial, sans-serif';
+
+// font
+$--font-size-small: 12px !default;
+$--font-size-base: 14px !default;
+$--font-size-large: 16px !default;
+$--font-size-larger: 18px !default;
+$--font-size-title: 20px !default;
+$--font-size-huge: 22px !default;
+$--font-size-huger: 26px !default;
+$--font-size-largest: 30px !default;
+
+// color
+$--color-primary: #1c91ff;
+$--color-text-disabled: rgba(131, 173, 255, 0.6)!default;
+
+// sidebar
+$menuText:#bfcbd9 !default;
+$menuActiveText:#fff !default;
+$menuBg:rgba(43,47,58,1) !default;
+$menuHover: rgba(64,158,255,0.2) !default;
+$subMenuBg: rgba(43,47,58,1) !default;
+$subMenuHover: rgba(64,158,255,0.2) !default;
+$subMenuActiveText:#409EFF !default; // https://github.com/ElemeFE/element/issues/12951
+$subMenuActiveBgColor: rgba(64,158,255,0.2) !default;
+
+
+// font
+$--font-size-larger: 18px !default;
+$--font-size-base: 14px !default;
+
+// color
+$--color-white: #fff !default;
+$-color-background: #f9f9f9;
+
+//color added by zhdd
+$--color-text-accessorial: #999 !default;
+
+// Dialog
+// $--dialog-background-color: $--color-white;
+// $--dialog-border: none;
+// $--dialog-side-border: solid 1px #dbe1e4;
+// $--dialog-border-radius: 6px;
+// $--dialog-title-font-size: $--font-size-larger;
+// $--dialog-title-color: $--color-white;
+// $--dialog-title-fill: url('../../assets/images/dialogTitleBG.png');
+// $--dialog-body-fill: $--dialog-background-color;
+// $--dialog-footer-fill: $--dialog-background-color;
+// $--dialog-footer-border: solid 1px #dbe1e4;
+// $--dialog-close-button-size: 26px;
+// $--dialog-close-button-color: $--color-white;
+// $--dialog-close-button-fontsize: 16px;
+// $--dialog-close-button-background: rgba($--color-white, 0.2);
+// $--dialog-close-button-background-hover: rgba($--color-white, 0.6);
+// $--dialog-close-button-border: solid 1px $--color-white;
+// $--dialog-close-button-shadow: 0px 2px 20px 0 rgba(0, 0, 0, 0.2);
+
+// MessageBox
+// custome
+// $--msgbox-border: $-color-background;
+// $--msgbox-fill: $-color-background;
+// $--msgbox-color: #333;
+
+// contextMenu
+$--contextMenu-box-shadow:0 0  20px 2px rgba(#808080,0.5);
+$--contextMenu-background: #fff;
+$--contextMenu-font-color: #333;
+$--contextMenu-active-font-color: #fff;
+$--contextMenu-active-background: #4285f4;
+$--contextMenu-disable-font-color:#b6d4ff;
+
+
+
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

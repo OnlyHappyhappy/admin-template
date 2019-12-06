@@ -16,16 +16,14 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      //   sass: {
-      //     data: `
-      //     @import "~@/styles/_mixins.scss";
-      //     @import "~@/styles/_fluid.scss";
-      //     @import "@/styles/theme/mixins/function.scss";
-      //     @import "@/styles/theme/mixins/config.scss";
-      //     @import "~@/styles/theme/mixins/elementuiBEM.scss";
-      //     @import "~@/styles/_variables.scss";
-      //      `
-      //   }
+      sass: {
+        prependData: `@import "src/styles/mixins/mixins.scss";
+          @import "src/styles/default/variables.scss";
+        `
+      }
     }
+  },
+  chainWebpack: config => {
+    config.resolve.alias.set("@", resolve("src"));
   }
 };

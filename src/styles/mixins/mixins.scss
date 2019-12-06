@@ -1,0 +1,109 @@
+@import "function";
+
+/*  
+  $namespace: 'gs';
+  $element-separator: '__';
+  $modifier-separator: '--';
+  $state-prefix: 'is-'; 
+*/
+
+
+
+/*
+BEM
+@include b(button) {
+  @include e(demo) {
+    @include m(loading) {
+
+    }
+  }
+}
+编译之后
+.sf-button__demo--loading {
+
+}
+
+*/
+
+@mixin b($block) {
+    $B: $namespace+"-"+$block !global;
+
+    .#{$B} {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    $E: $element !global;
+    $selector: &;
+    $currentSelector: "";
+
+    @each $unit in $element {
+        $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit +
+ ","
+    }
+
+    ;
+}
+
+@if hitAllSpecialNestRule($selector) {
+    @at-root {
+        #{$selector} {
+            #{$currentSelector} {
+                @content;
+            }
+        }
+    }
+}
+
+@else {
+    @at-root {
+        #{$currentSelector} {
+            @content;
+        }
+    }
+}
+}
+
+@mixin m($modifier) {
+    $selector: &;
+    $currentSelector: "";
+
+    @each $unit in $modifier {
+        $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+    }
+
+    @at-root {
+        #{$currentSelector} {
+            @content;
+        }
+    }
+}
+
+/*
+状态切换时使用  需要与区分BEM中的modifier 功能不一样  modifier中M始终始终保持某个状态
+div {
+  @include when(active) {
+    color:red
+  }
+}
+
+div.is_active {
+  color:red
+}
+*/
+@mixin when($state) {
+    @at-root {
+        &.#{$state-prefix + $state} {
+            @content;
+        }
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

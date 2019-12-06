@@ -1,0 +1,158 @@
+// @import "src/themes/mixins/mixins.scss";
+.el-dialog__wrapper{
+  //1366适配
+  .el-dialog{
+    margin-top:15vh;
+    // width:1200px;
+    max-height:800px;
+  }
+}
+//
+// Dialog
+.el-dialog {
+  width: fit-content ; //低分辨率总是出现横向滚动条,用fitcontent自适应内容宽度
+  border: $--dialog-border; 
+  // margin-top: 10vh !important;
+  border-radius: $--dialog-border-radius;
+  &__header {
+    text-align: center;
+    background: $--dialog-title-fill;
+    background-size: 100% 100%;
+    padding: 0 17px;
+    box-sizing: border-box;
+    height: 35px;
+    line-height: 35px;
+    border-radius: $--dialog-border-radius $--dialog-border-radius 0 0;
+    
+    .el-dialog__title {
+      color: $--dialog-title-color;
+      font-size: $--font-size-base;
+    }
+  }
+
+  &__headerbtn {
+    top: -($--dialog-close-button-size / 2);
+    right: -($--dialog-close-button-size / 2);
+    width: $--dialog-close-button-size;
+    height: $--dialog-close-button-size;
+    border-radius: 50%;
+    border: $--dialog-close-button-border;
+    background-color: $--dialog-close-button-background;
+    box-shadow: $--dialog-close-button-shadow;
+    i.el-dialog__close {
+      font-size: $--dialog-close-button-fontsize;
+      opacity: 0.78;
+      color: $--dialog-close-button-color;
+    }
+    &:hover {
+      background-color: $--dialog-close-button-background-hover;
+      i.el-dialog__close {
+        opacity: 1;
+        color: $--dialog-close-button-color;
+      }
+    }
+  }
+
+  &__body {
+    background-color: $--dialog-body-fill;
+    padding: 40px 60px 10px 40px;
+    border-radius: 0 0 3px 3px;
+    max-height: 583px;
+    overflow-y: auto;
+
+    .el-dialog__footer {
+      // margin: 0 -.60rem -.10rem -.40rem;
+      background-color: $--dialog-body-fill;
+    }
+  }
+
+  &__footer {
+    border-top: $--dialog-footer-border;
+    background-color: $--dialog-body-fill;
+    border-radius: 0 0 $--dialog-border-radius $--dialog-border-radius;
+    padding: 12px 14px 12px 0;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    &.with-noHeader {
+      .el-dialog__header {
+        height: 0;
+        padding: 0;
+      }
+    }
+    // position: absolute;
+    &.with-custom-footer {
+      .el-dialog__body {
+        padding: 30px 20px 0;
+        border-radius: 0 0 4px 4px;
+      }
+      .el-dialog__footer {
+        margin: 0 -20px;
+        background: transparent;
+        padding-right: 40px;
+      }
+    }
+
+    &.with-form {
+      .el-form {
+        .el-form-item {
+          margin-bottom: 20px;
+        }
+        .el-form-item__label {
+          padding-right: 20px;
+          font-size: $--font-size-base;
+          line-height: 30px;
+        }
+        .el-form-item__content {
+          line-height: 30px;
+          font-size:$--font-size-base;
+          width: 300px;
+          .el-select {
+            width: 100%;
+          }
+        }
+      }
+      // el-input 
+      .el-input {
+        width: 100%;
+        height: 30px;
+      }
+      .el-input__inner {
+        width: 100%;
+        height: 30px !important; //重置ele的默认样式
+      }
+        // dateInput {
+      .el-date-editor {
+        &.el-input {
+          width: 120px;
+          height: 30px;
+        }
+        .el-input__inner {
+          width: 120px;
+          height: 30px;
+        }
+        .el-input__icon {
+          line-height: 36px;
+        }
+      }
+      .sf-gbform.el-date-editor {
+        &.el-input {
+          width: 100%;
+        }
+        .el-input__inner {
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}
+

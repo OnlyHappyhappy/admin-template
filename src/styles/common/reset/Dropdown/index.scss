@@ -1,0 +1,4 @@
+.el-select-dropdown .popper__arrow,
+.el-select-dropdown .popper__arrow::after {
+  display: none !important;
+}
